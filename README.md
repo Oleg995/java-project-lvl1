@@ -5,6 +5,7 @@
 
 
 https://asciinema.org/a/Aq9K3vuMu2FMgBBGAj85RdWx6
+https://asciinema.org/a/GT5K4ILPAP2NQ98inrQxi1gsL
 
 
 ![example workflow](https://github.com/Oleg995/java-project-lvl1/actions/workflows/newfile.yaml/badge.svg)
