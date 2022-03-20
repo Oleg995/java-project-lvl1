@@ -1,8 +1,9 @@
 package hexlet.code;
 
 import java.util.Scanner;
-class Cli {
-    public static String helloName() {
+
+public class Cli {
+    public static String string() {
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
