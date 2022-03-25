@@ -12,17 +12,17 @@ public class Engine {
         String name = Cli.string();
         out.println("Hello, " + name + "!");
         out.println(task);
-        out.println(questions[0]);
+        out.println("Question: " + questions[0]);
         out.print(TEXT2);
         String number = Cli.string();
         if (answers[0].equals(number)) {
             out.println("correct!");
-            out.println(questions[1]);
+            out.println("Question: " + questions[1]);
             out.print(TEXT2);
             number = Cli.string();
             if (answers[1].equals(number)) {
                 out.println("correct!");
-                out.println(questions[2]);
+                out.println("Question: " + questions[2]);
                 out.print(TEXT2);
                 number = Cli.string();
                 if (answers[2].equals(number)) {
