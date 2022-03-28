@@ -30,16 +30,16 @@ public class Engine {
                     out.println("correct!\nCongratulations, " + name + "!");
                 } else {
                     out.println("'" + number + "'" + " is wrong answer ;(. Correct answer was: " + "'"
-                            + answers[2] + "'" + " Let's try again, " + name);
+                            + answers[2] + "'" + " Let's try again, " + name + "!");
                 }
             } else {
 
                 out.println("'" + number + "'" + " is wrong answer ;(. Correct answer was: " + "'"
-                        + answers[1] + "'" + " Let's try again, " + name);
+                        + answers[1] + "'" + " Let's try again, " + name + "!");
             }
         } else {
             out.println("'" + number + "'" + " is wrong answer ;(. Correct answer was: " + "'"
-                    + answers[0] + "'" + " Let's try again, " + name);
+                    + answers[0] + "'" + " Let's try again, " + name + "!");
         }
     }
 }
