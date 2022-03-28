@@ -1,8 +1,8 @@
 package hexlet.code.Games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
-import java.util.Random;
 import java.util.StringJoiner;
 
 public class Progression {
@@ -16,23 +16,10 @@ public class Progression {
     public static void run() {
         String[] questions = new String[LIMIT_LENGTH_ARRAYS];
         String[] answers = new String[LIMIT_LENGTH_ARRAYS];
-        Random random = new Random();
         for (int round = 0; round < LIMIT_LENGTH_ARRAYS; round++) {
-            int randomLength = MINIMAL_LENGTH_ARRAYS + random.nextInt(
-                    MAX_LENGTH_ARRAYS - MINIMAL_LENGTH_ARRAYS + 1);
-            int startIndex = MIN_VALUE + random.nextInt(MAX_START_INDEX - MIN_VALUE + 1);
-            int difference = MIN_VALUE + random.nextInt(MAX_STEPS_ARRAYS - MIN_VALUE + 1);
-            int[] a = new int[randomLength];
-            a[0] = startIndex;
-
-            int result = startIndex;
-            for (int i = 1; i < a.length; i++) {
-                result = result + difference;
-                a[i] = result;
-            }
-            int randomNumber = random.nextInt(a.length - 1);
-            questions[round] = round == 2 ? hiddenElementReverse(a, randomNumber) : hiddenElement(a, randomNumber);
-            answers[round] = String.valueOf(a[randomNumber]);
+            var questionAndAnswer = generateRoundData();
+            questions[round] = questionAndAnswer[0];
+            answers[round] = questionAndAnswer[1];
         }
         Engine.run("Find the greatest common divisor of given numbers.", questions, answers);
     }
@@ -50,19 +37,30 @@ public class Progression {
         return result.toString();
     }
 
-    public static String hiddenElementReverse(int[] a, int b) {
-        var result = new StringJoiner(" ");
-        for (int i = a.length - 1; i >= 0; i--) {
-            int element = a[i];
-            if (i == b) {
-                result.add("..");
-            } else {
-                result.add(String.valueOf(element));
-            }
+    private static int[] generateSequence(int startIndex, int difference, int length) {
+        int[] a = new int[length];
+        a[0] = startIndex;
+        int result = startIndex;
+        for (int i = 1; i < a.length; i++) {
+            result = result + difference;
+            a[i] = result;
         }
-        return result.toString();
+        return a;
+    }
+
+    private static String[] generateRoundData() {
+        int randomLength = MINIMAL_LENGTH_ARRAYS + Utils.generateOfNumber(
+                MAX_LENGTH_ARRAYS - MINIMAL_LENGTH_ARRAYS + 1);
+        int startIndex = MIN_VALUE + Utils.generateOfNumber(MAX_START_INDEX - MIN_VALUE + 1);
+        int difference = MIN_VALUE + Utils.generateOfNumber(MAX_STEPS_ARRAYS - MIN_VALUE + 1);
+        int[] a = generateSequence(startIndex, difference, randomLength);
+        int randomNumber = Utils.generateOfNumber(a.length - 1);
+        var question = hiddenElement(a, randomNumber);
+        var answer = String.valueOf(a[randomNumber]);
+        return new String[]{question, answer};
     }
 }
+
 
 
 

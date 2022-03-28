@@ -6,6 +6,8 @@ import hexlet.code.Games.GreatestCommonDivisor;
 import hexlet.code.Games.PrimeNumber;
 import hexlet.code.Games.Progression;
 
+import java.util.Scanner;
+
 import static java.lang.System.out;
 
 public class App {
@@ -19,28 +21,24 @@ public class App {
 
     public static void main(String[] args) {
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Even");
-        System.out.println("3 - Calc");
-        out.println("4 - GCD");
-        out.println("5 - Arithmetic progression");
-        out.println("6 - Prime");
-        System.out.println("0 - Exit");
+        System.out.println(GREET_NUMBER + " - Greet");
+        System.out.println(EVEN_NUMBER + " - Even");
+        System.out.println(CALC_NUMBER + " - Calc");
+        out.println(GCD_NUMBER + " - GCD");
+        out.println(PROGRESSION_NUMBER + " - Arithmetic progression");
+        out.println(PRIME_NUMBER + " - Prime");
+        System.out.println(EXIT_NUMBER + " - Exit");
         System.out.print("Your choice: ");
-        int numb = Cli.number();
+        Scanner sc = new Scanner(System.in);
+        int numb = sc.nextInt();
         switch (numb) {
-            case GREET_NUMBER -> {
-                System.out.println("\nWelcome to the Brain Games!");
-                System.out.print("May I have your name? ");
-                String name = Cli.string();
-                System.out.println("Hello, " + name + "!");
-            }
-            case EVEN_NUMBER -> Even.evenGame();
-            case CALC_NUMBER -> Calc.calculator();
+            case GREET_NUMBER -> Cli.greet();
+            case EVEN_NUMBER -> Even.runGame();
+            case CALC_NUMBER -> Calc.runGame();
             case EXIT_NUMBER -> System.out.println("Goodbye");
-            case GCD_NUMBER -> GreatestCommonDivisor.threeGame();
+            case GCD_NUMBER -> GreatestCommonDivisor.runGame();
             case PROGRESSION_NUMBER -> Progression.run();
-            case PRIME_NUMBER -> PrimeNumber.run();
+            case PRIME_NUMBER -> PrimeNumber.runGame();
             default -> out.println("there is no such option. try again");
         }
     }
