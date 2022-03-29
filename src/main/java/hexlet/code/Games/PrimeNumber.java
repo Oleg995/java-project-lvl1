@@ -20,11 +20,9 @@ public class PrimeNumber {
     }
 
     private static boolean isPrime(int question) {
-        if (question < 2) {
-            return false;
-        } else if (question == 2) {
+        if (question == 2) {
             return true;
-        } else if (question % 2 == 0) {
+        } else if (question % 2 == 0 || question < 2) {
             return false;
         } else {
             for (int i = COUNT; i < question; i += 2) {
